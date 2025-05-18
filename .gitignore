@@ -9,3 +9,6 @@ exp*
 *.err
 *.out
 *.pkl
+DEPICT*
+JULE*
+datasets*
