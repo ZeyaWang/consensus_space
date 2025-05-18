@@ -1,0 +1,11 @@
+.idea
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
+_pycache_
+exp*
+*.csv
+*.sh
+*.err
+*.out
+*.pkl
