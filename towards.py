@@ -122,10 +122,10 @@ class Towards(TSNE):
         X_new : ndarray of shape (n_samples, n_components)
             Embedding of the training data in low-dimensional space.
         """
-        if self.max_iter is None:
-            self._max_iter = 1000
-        else:
-            self._max_iter = self.max_iter
+        #if self.max_iter is None:
+        self._max_iter = 1000
+        # else:
+        #     self._max_iter = self.max_iter
         for X in X_list:
             self._check_params_vs_input(X)
         embedding, P, alpha = self._fit_fusion(X_list)
