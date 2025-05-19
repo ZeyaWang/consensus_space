@@ -16,7 +16,7 @@ This project requires the following Python packages:
 
 ### Evaluation
 
-1. Download the output files from the deep clustering algorithms listed in the paper:
+1. Download the evaluated output files from the deep clustering algorithms:
    [Google Drive Folder](https://drive.google.com/drive/folders/1HBmYO_BThSW9ysfCPKPRuwm4kg1bKzSM?usp=drive_link)
 
 2. Save them into a local directory.
