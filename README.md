@@ -20,9 +20,7 @@ This project requires the following Python packages:
 
 2. Save them into a local directory.
 
-3. Run the evaluation script:
-
-`towards.py` is the script to be used to run the experiments and obtain the results in the paper.
+3. Run the evaluation script `towards.py` to implement the experiments and obtain the results in the paper.
 
 
 To evaluate a specific dataset or task:
