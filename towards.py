@@ -1,3 +1,36 @@
+# =============================================================================
+# Shared manifold for Reliable Clustering Evaluation in Deep Learning
+# =============================================================================
+# File: towards.py
+
+#
+# Description:
+# This module implements a method to learn a shared manifold for internal vaildation
+# in deep clustering evaluation. Our method can be adapted with different manifold 
+# learning method. This implementation is based on TSNE, and extends scikit-learn's 
+# TSNE implementation and overrides several key methods in TSNE. 
+#
+# Based on:
+# scikit-learn: https://github.com/scikit-learn/scikit-learn
+# TSNE source: sklearn.manifold._t_sne.TSNE
+#
+# Key Features:
+# - Inherits from sklearn.manifold.TSNE
+# - Overrides `_fit_transform()`
+#
+# Usage:
+# model = Towards(n_components=2, perplexity=30, my_param=0.5)
+# embedding = model.fit_transform(X)
+#
+# Notes:
+# Ensure compatibility with the sklearn version 1.5.1
+# This code is for research and prototyping purposes.
+#
+# =============================================================================
+
+
+
+
 import numpy as np
 from scipy.spatial.distance import pdist, squareform
 MACHINE_EPSILON = np.finfo(np.double).eps
@@ -210,12 +243,6 @@ if __name__ == '__main__':
         'DEPICT': 'DEPICT_hyper',
         'DEPICTnum': 'DEPICT_num',
     }
-    rootpath = {
-        'jule': 'JULE_hyper',
-        'julenum': 'JULE_num',
-        'DEPICT': 'DEPICT_hyper',
-        'DEPICTnum': 'DEPICT_num',
-    }
 
 
     parser = argparse.ArgumentParser()
@@ -235,7 +262,7 @@ if __name__ == '__main__':
         task_name = task
     if not os.path.isdir(task_name):
         os.mkdir(task_name)
-    tpath = os.path.join(task_name, 'manifold_metric_np_{}'.format(args.n_components))
+    tpath = os.path.join(task_name, 'manifold_{}_{}'.format(args.n_components, args.perplexity))
 
     if not os.path.isdir(tpath):
         os.mkdir(tpath)
@@ -297,23 +324,23 @@ if __name__ == '__main__':
         euclideans.append(scored['euclidean'][key])
 
 
-    print('nmi')
+    print('kendall tau in terms of nmi')
     print(kendalltau(euclideans, nmis))
     print(kendalltau(davs, nmis))
     print(kendalltau(chs, nmis))
-    print('acc')
+    print('kendall tau in terms of acc')
     print(kendalltau(euclideans, accs))
     print(kendalltau(davs, accs))
     print(kendalltau(chs, accs))
-    print('nmi')
+    print('spearman rank correlation in terms of nmi')
     print(spearmanr(euclideans, nmis))
     print(spearmanr(davs, nmis))
     print(spearmanr(chs, nmis))
-    print('acc')
+    print('spearman rank correlation in terms of acc')
     print(spearmanr(euclideans, accs))
     print(spearmanr(davs, accs))
     print(spearmanr(chs, accs))
 
 
-    with open(os.path.join(tpath,'manifold_{}_{}_{}_score.pkl'.format(task_name,eval_data, args.perplexity)), 'wb') as file:
+    with open(os.path.join(tpath,'{}_{}_score.pkl'.format(task_name,eval_data)), 'wb') as file:
         pk.dump(scored, file)
