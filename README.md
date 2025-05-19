@@ -19,7 +19,7 @@ This project requires the following Python packages:
 1. Download the evaluated output files from the deep clustering algorithms:
    [Google Drive Folder](https://drive.google.com/drive/folders/1HBmYO_BThSW9ysfCPKPRuwm4kg1bKzSM?usp=drive_link)
 
-2. Save them into a local directory.
+2. Save them into the same local directory with the scripts.
 
 3. Run the evaluation script `towards.py` to implement the experiments and obtain the results in the paper.
 
@@ -42,4 +42,4 @@ python towards.py --task <task> --dataset <dataset>
 
 ### Output
 
-The script outputs Kendall Tau and Spearman correlation scores between internal evaluation metrics computed on the learned shared manifold and external benchmarks such as NMI and clustering accuracy.
+The script outputs Kendall Tau and Spearman correlation coefficients between internal evaluation metrics computed on the learned shared manifold and external benchmarks such as NMI and clustering accuracy.
